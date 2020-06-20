@@ -4,7 +4,7 @@ const router = express.Router();
 //traemos la conexion con la db
 const mysqlConnection = require('../database')
 
-//Crear Evento
+//Crear viaje
 router.post('/viaje/create', (req, res) => {
     const { Fecha_Ini, Fecha_Fin, motivo, lugar, Proyecto_Proy_ID } = req.body;
     const query = `INSERT INTO viaje(Fecha_Ini,Fecha_Fin,motivo,lugar,Proyecto_Proy_ID) values(?,?,?,?,?);`;
