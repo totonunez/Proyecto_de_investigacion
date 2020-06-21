@@ -18,4 +18,8 @@ export class EventosService {
   getViajesProyecto(id_proyecto:number){
     return this.http.get(`${this.API_URI}/viajes/${id_proyecto}`);
   }
+
+  postViajeProyecto(viaje:any){
+    return this.http.get(`${this.API_URI}/viajes/`,viaje);
+  }
 }
