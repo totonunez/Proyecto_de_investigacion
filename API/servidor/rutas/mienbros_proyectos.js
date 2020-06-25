@@ -5,10 +5,9 @@ const mysqlConnection = require('../database');
 //Retornar si el miembro es JP
 router.post('/mienbros_proyectos/privilegiojp', (req, res) => {
     const { users_User_ID, Proyecto_Proy_ID } = req.body;
-    const query = `SELECT JP FROM users_has_Proyecto WHERE users_User_ID=? AND Proyecto_Proy_ID=?`;
+    const query = `SELECT * FROM users_has_Proyecto WHERE users_User_ID=? AND Proyecto_Proy_ID=?`;
     mysqlConnection.query(query, [users_User_ID, Proyecto_Proy_ID ], (err, rows, fields) => {
         if (!err) {
-            console.log(req);
             res.json(rows);
             console.log("JP retornados con exito!");
         } else {
@@ -86,6 +85,21 @@ router.post('/mienbros_proyectos/eliminarmiembro', (req, res) => {
             console.log(req);
             res.json(rows);
             console.log("Miembro eliminado con exito!");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//Retornar User ID de parametro un usuario
+router.get('/mienbros_proyectos/getuseridbyusername/:id', (req, res) => {
+    const { Usuario } = req.body;
+    const query = `DELETE users_has_Proyecto WHERE users_User_ID=? AND Proyecto_Proy_ID=?`;
+    mysqlConnection.query(query, [Usuario], (err, rows, fields) => {
+        if (!err) {
+            console.log(req);
+            res.json(rows);
+            console.log("ID user retornado con exito!");
         } else {
             console.log(err);
         }
