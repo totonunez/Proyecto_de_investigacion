@@ -1,28 +1,173 @@
 const express = require('express');
 const router = express.Router();
+const mysqlConnection = require('../database');
 
 
-//traemos la conexion con la db
-const mysqlConnection=require('../database')
 
-//Primera ruta: para traer informacion del usuario
-
-router.post('/usuarios',(req,res) => {
-
-    //login:requiere metodo post por que el json que recibe tiene mas de dos elementos
-    //que en este caso son email y password
-   const {email,password}=req.body;
-    const query=`inserte sql`;
-    //Para buscar en la informacion en la base de datas
-    mysqlConnection.query(query,[email,password],(err,rows,fields) =>{
-        if(!err){
+//Obetener Usuario
+router.get('/usuarios/:ID', (req, res) => {
+    const { ID } = req.params;
+    const query = `select * from users where User_ID=?`;
+    mysqlConnection.query(query, [ID], (err, rows, fields) => {
+        if (!err) {
             console.log(req);
-            res.json(rows);//entrega cada fila de la consulta
-            console.log("Usuarios retornado!");
-        }else{
+            res.json(rows);
+            console.log("Usuario retornado con exito!");
+            console.log(rows)
+        } else {
             console.log(err);
         }
     });
 });
-//para exportar la ruta al archivo index.js
+
+//Crear Usuario
+router.post('/usuarios/crear', (req, res) => {
+    const { Email,Password,Usuario,Descripcion } = req.body;
+    const query = `INSERT INTO users(Email,Password,Usuario,Descripcion) VALUES (?,?,?,?)`;
+    mysqlConnection.query(query, [Email,Password,Usuario,Descripcion], (err, rows, fields) => {
+        if (!err) {
+            console.log(req);
+            res.json(rows);
+            console.log("Usuario creado!");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//Eliminar Usuario
+router.post('/usuarios/eliminar', (req, res) => {
+    const { ID } = req.body;
+    const query = `DELETE FROM users WHERE Proy_ID=?`;
+    mysqlConnection.query(query, [ID], (err, rows, fields) => {
+        if (!err) {
+            console.log(req);
+            res.json(rows);
+            console.log("Usuario borrado!");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//Conseguir Descripcion
+router.get('/usuarios/descripcion/:ID', (req, res) => {
+    const { ID } = req.params;
+    const query = `SELECT Descripcion FROM Proyecto WHERE User_ID=?`;
+    mysqlConnection.query(query, [ID], (err, rows, fields) => {
+        if (!err) {
+            console.log(req);
+            res.json(rows);
+            console.log("Descripción conseguida");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//Cambiar Descripcion
+router.post('/usuarios/descripcion/cambiar', (req, res) => {
+    const { Descripcion, ID } = req.body;
+    const query = `UPDATE users SET Descripcion = ? WHERE User_ID = ?`;
+    mysqlConnection.query(query, [Descripcion, ID], (err, rows, fields) => {
+        if (!err) {
+            console.log(req);
+            res.json(rows);
+            console.log("Descripcion cambiada!");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//Conseguir Email
+router.get('/usuarios/email/:ID', (req, res) => {
+    const { ID } = req.params;
+    const query = `SELECT Email FROM Proyecto WHERE User_ID=?`;
+    mysqlConnection.query(query, [ID], (err, rows, fields) => {
+        if (!err) {
+            console.log(req);
+            res.json(rows);
+            console.log("Email conseguido");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//Cambiar Email
+router.post('/usuarios/email/cambiar', (req, res) => {
+    const { Email, ID } = req.body;
+    const query = `UPDATE users SET Email = ? WHERE User_ID = ?`;
+    mysqlConnection.query(query, [Email, ID], (err, rows, fields) => {
+        if (!err) {
+            console.log(req);
+            res.json(rows);
+            console.log("Email cambiado!");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//Conseguir Nombre de usuario
+router.get('/usuarios/usuario/:ID', (req, res) => {
+    const { ID } = req.params;
+    const query = `SELECT Usuario FROM users WHERE User_ID=?`;
+    mysqlConnection.query(query, [ID], (err, rows, fields) => {
+        if (!err) {
+            console.log(req);
+            res.json(rows);
+            console.log("Nombre conseguido");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//Cambiar Nombre de usuario
+router.post('/users/usuario/cambiar', (req, res) => {
+    const { Usuario, ID } = req.body;
+    const query = `UPDATE users SET Usuario = ? WHERE User_ID = ?`;
+    mysqlConnection.query(query, [Usuario, ID], (err, rows, fields) => {
+        if (!err) {
+            console.log(req);
+            res.json(rows);
+            console.log("Nombre cambiado!");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//Conseguir Password de usuario
+router.get('/usuarios/password/:ID', (req, res) => {
+    const { ID } = req.params;
+    const query = `SELECT Password FROM users WHERE User_ID=?`;
+    mysqlConnection.query(query, [ID], (err, rows, fields) => {
+        if (!err) {
+            console.log(req);
+            res.json(rows);
+            console.log("Password conseguido");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//Cambiar Nombre de usuario
+router.post('/users/password/cambiar', (req, res) => {
+    const { Password, ID } = req.body;
+    const query = `UPDATE users SET Password = ? WHERE User_ID = ?`;
+    mysqlConnection.query(query, [Password, ID], (err, rows, fields) => {
+        if (!err) {
+            console.log(req);
+            res.json(rows);
+            console.log("Password cambiado!");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
 module.exports=router;

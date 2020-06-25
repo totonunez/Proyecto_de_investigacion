@@ -3,65 +3,6 @@ const router = express.Router();
 const mysqlConnection = require('../database');
 
 
-//------------------------FORMULARIO--------------------------------------
-//Obetener Formulario
-router.get('/proyectos/formulario/:ID', (req, res) => {
-    const { ID } = req.params;
-    const query = `select * from Formulario where Formulario_ID=?`;
-    mysqlConnection.query(query, [ID], (err, rows, fields) => {
-        if (!err) {
-            res.json(rows);
-            console.log("Formulario retornado con exito!");
-        } else {
-            console.log(err);
-        }
-    });
-});
-
-//Obetener Formularios
-router.get('/proyectos/formulario/all', (req, res) => {
-    const query = `select * from Formulario`;
-    mysqlConnection.query(query, (err, rows, fields) => {
-        if (!err) {
-            res.json(rows);
-            console.log("Formularios retornados con exito!");
-        } else {
-            console.log(err);
-        }
-    });
-});
-
-//Crear solicitud de Proyecto
-router.post('/proyectos/formulario/crear', (req, res) => {
-    const { Nombre, Descripcion} = req.body;
-    const query = `INSERT INTO Formulario(Nombre,Descripcion) VALUES (?,?)`;
-    mysqlConnection.query(query, [Nombre, Descripcion], (err, rows, fields) => {
-        if (!err) {
-            console.log(req);
-            res.json(rows);
-            console.log("Formulario creado!");
-        } else {
-            console.log(err);
-        }
-    });
-});
-
-//Eliminar o rechazar solicitud Proyecto
-router.post('/proyectos/formulario/eliminar', (req, res) => {
-    const { ID } = req.body;
-    const query = `DELETE FROM Proyecto WHERE Proy_ID=?`;
-    mysqlConnection.query(query, [ID], (err, rows, fields) => {
-        if (!err) {
-            console.log(req);
-            res.json(rows);
-            console.log("Formulario borrado!");
-        } else {
-            console.log(err);
-        }
-    });
-});
-
-//------------------------PROYECTO--------------------------------------
 
 //Obetener ID del proyecto
 router.get('/proyectos/:ID', (req, res) => {

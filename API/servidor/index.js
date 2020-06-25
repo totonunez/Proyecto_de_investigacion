@@ -26,6 +26,7 @@ app.use(cors());
 //---------------Rutas----------------------
 //routes
 app.use(require('./rutas/usuarios'));
+app.use(require('./rutas/formularios'));
 app.use(require('./rutas/proyectos'));
 app.use(require('./rutas/grupos'));
 app.use(require('./rutas/documentos'));
