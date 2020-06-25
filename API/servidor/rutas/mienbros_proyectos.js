@@ -92,12 +92,12 @@ router.post('/mienbros_proyectos/eliminarmiembro', (req, res) => {
 });
 
 //Retornar User ID de parametro un usuario
-router.get('/mienbros_proyectos/getuseridbyusername/:id', (req, res) => {
-    const { Usuario } = req.body;
-    const query = `DELETE users_has_Proyecto WHERE users_User_ID=? AND Proyecto_Proy_ID=?`;
+router.get('/mienbros_proyectos/getuseridbyusername/:Usuario', (req, res) => {
+    const { Usuario } = req.params;
+    const query = `SELECT User_ID FROM users WHERE Usuario = ?`;
     mysqlConnection.query(query, [Usuario], (err, rows, fields) => {
         if (!err) {
-            console.log(req);
+            console.log(Usuario);
             res.json(rows);
             console.log("ID user retornado con exito!");
         } else {

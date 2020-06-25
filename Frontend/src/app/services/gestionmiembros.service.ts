@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { userandjpid } from '../models/IDJPIDuser';
+import { userandproyecto } from '../models/userandproyeccto';
+import { Invproyecto } from '../models/invproyecto';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +42,10 @@ export class Gestionmiembros {
   retornarsiesjp(ids: userandjpid){
     return this.http.post(`${this.API_URI}/mienbros_proyectos/privilegiojp`, ids)
   }
-  getGame(username: string) {
-    return this.http.get(`${this.API_URI}/games/${username}`);
+  Get_UserID(username: userandproyecto) {
+    return this.http.get(`${this.API_URI}/mienbros_proyectos/getuseridbyusername/${username.Usuario}`);
+  }
+  Invmiemb(idsJPUser: Invproyecto) {
+    return this.http.post(`${this.API_URI}/mienbros_proyectos/invitarmiembro`,idsJPUser);
   }
 }
