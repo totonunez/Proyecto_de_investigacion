@@ -17,18 +17,6 @@ router.get('/formularios/:ID', (req, res) => {
     });
 });
 
-//Obetener Formularios
-router.get('/formularios/all', (req, res) => {
-    const query = `select * from Formulario`;
-    mysqlConnection.query(query, (err, rows, fields) => {
-        if (!err) {
-            res.json(rows);
-            console.log("Formularios retornados con exito!");
-        } else {
-            console.log(err);
-        }
-    });
-});
 
 //Crear solicitud de Proyecto
 router.post('/formularios/crear', (req, res) => {

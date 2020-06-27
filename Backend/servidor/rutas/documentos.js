@@ -3,18 +3,19 @@ const router = express.Router();
 const mysqlConnection = require('../database');
 
 //Obetener Documento
-router.get('/proyectos/documentos/:ID', (req, res) => {
-    const { ID } = req.params;
+router.get('/proyectos/documentos/:Doc_ID', (req, res) => {
+    const { Doc_ID } = req.params;
     const query = `select * from Documento where Doc_ID=?`;
-    mysqlConnection.query(query, [ID], (err, rows, fields) => {
+    mysqlConnection.query(query, [Doc_ID], (err, rows, fields) => {
         if (!err) {
             res.json(rows);
-            console.log("Documento ID retornado con exito!");
+            console.log("Documento retornado con exito!");
         } else {
             console.log(err);
         }
     });
 });
+
 
 //Añadir Documento
 router.post('/proyectos/documentos/crear', (req, res) => {
@@ -33,9 +34,9 @@ router.post('/proyectos/documentos/crear', (req, res) => {
 
 //Eliminar Documento
 router.post('/proyectos/documentos/eliminar', (req, res) => {
-    const { ID } = req.body;
+    const { Doc_ID } = req.body;
     const query = `DELETE FROM Documento WHERE Doc_ID=?`;
-    mysqlConnection.query(query, [ID], (err, rows, fields) => {
+    mysqlConnection.query(query, [Doc_ID], (err, rows, fields) => {
         if (!err) {
             console.log(req);
             res.json(rows);
@@ -47,10 +48,10 @@ router.post('/proyectos/documentos/eliminar', (req, res) => {
 });
 
 //Conseguir Nombre
-router.get('/proyectos/documentos/nombre/:ID', (req, res) => {
-    const { ID } = req.params;
+router.get('/proyectos/documentos/nombre/:Doc_ID', (req, res) => {
+    const { Doc_ID } = req.params;
     const query = `SELECT Nombre FROM Documento WHERE Doc_ID=?`;
-    mysqlConnection.query(query, [ID], (err, rows, fields) => {
+    mysqlConnection.query(query, [Doc_ID], (err, rows, fields) => {
         if (!err) {
             console.log(req);
             res.json(rows);
@@ -63,9 +64,9 @@ router.get('/proyectos/documentos/nombre/:ID', (req, res) => {
 
 //Cambiar Nombre
 router.post('/proyectos/documentos/nombre/cambiar', (req, res) => {
-    const { Nombre, ID } = req.body;
+    const { Nombre, Doc_ID } = req.body;
     const query = `UPDATE Documento SET Nombre = ? WHERE Doc_ID = ?`;
-    mysqlConnection.query(query, [Nombre, ID], (err, rows, fields) => {
+    mysqlConnection.query(query, [Nombre, Doc_ID], (err, rows, fields) => {
         if (!err) {
             console.log(req);
             res.json(rows);
@@ -77,10 +78,10 @@ router.post('/proyectos/documentos/nombre/cambiar', (req, res) => {
 });
 
 //Conseguir Descripcion
-router.get('/proyectos/documentos/descripcion/:ID', (req, res) => {
-    const { ID } = req.params;
+router.get('/proyectos/documentos/descripcion/:Doc_ID', (req, res) => {
+    const { Doc_ID } = req.params;
     const query = `SELECT Descripcion FROM Documento WHERE Doc_ID=?`;
-    mysqlConnection.query(query, [ID], (err, rows, fields) => {
+    mysqlConnection.query(query, [Doc_ID], (err, rows, fields) => {
         if (!err) {
             console.log(req);
             res.json(rows);
@@ -93,9 +94,9 @@ router.get('/proyectos/documentos/descripcion/:ID', (req, res) => {
 
 //Cambiar Descripcion
 router.post('/proyectos/documentos/descripcion/cambiar', (req, res) => {
-    const { Descripcion, ID } = req.body;
+    const { Descripcion, Doc_ID } = req.body;
     const query = `UPDATE Documento SET Descripcion = ? WHERE Doc_ID = ?`;
-    mysqlConnection.query(query, [Descripcion, ID], (err, rows, fields) => {
+    mysqlConnection.query(query, [Descripcion, Doc_ID], (err, rows, fields) => {
         if (!err) {
             console.log(req);
             res.json(rows);
@@ -107,10 +108,10 @@ router.post('/proyectos/documentos/descripcion/cambiar', (req, res) => {
 });
 
 //Conseguir URL
-router.get('/proyectos/documentos/URL/:ID', (req, res) => {
-    const { ID } = req.params;
+router.get('/proyectos/documentos/URL/:Doc_ID', (req, res) => {
+    const { Doc_ID } = req.params;
     const query = `SELECT URL FROM Documento WHERE Doc_ID=?`;
-    mysqlConnection.query(query, [ID], (err, rows, fields) => {
+    mysqlConnection.query(query, [Doc_ID], (err, rows, fields) => {
         if (!err) {
             console.log(req);
             res.json(rows);

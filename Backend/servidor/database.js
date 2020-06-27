@@ -8,7 +8,7 @@ const mysqlConnection = mysql.createConnection({
     //modificar con la informacion de la base de datos.
     host:'localhost',
     user:'root',
-    password:'root123',
+    password:'esteban172',
     database:'proyecto_de_investigacion',
     port: 3306
 });

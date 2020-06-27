@@ -126,7 +126,7 @@ router.get('/usuarios/usuario/:ID', (req, res) => {
 });
 
 //Cambiar Nombre de usuario
-router.post('/users/usuario/cambiar', (req, res) => {
+router.post('/usuarios/usuario/cambiar', (req, res) => {
     const { Usuario, ID } = req.body;
     const query = `UPDATE users SET Usuario = ? WHERE User_ID = ?`;
     mysqlConnection.query(query, [Usuario, ID], (err, rows, fields) => {
@@ -156,7 +156,7 @@ router.get('/usuarios/password/:ID', (req, res) => {
 });
 
 //Cambiar Nombre de usuario
-router.post('/users/password/cambiar', (req, res) => {
+router.post('/usuarios/password/cambiar', (req, res) => {
     const { Password, ID } = req.body;
     const query = `UPDATE users SET Password = ? WHERE User_ID = ?`;
     mysqlConnection.query(query, [Password, ID], (err, rows, fields) => {
@@ -164,6 +164,38 @@ router.post('/users/password/cambiar', (req, res) => {
             console.log(req);
             res.json(rows);
             console.log("Password cambiado!");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//--------------------------------------------------------
+
+//Obetener proyectos
+router.get('/usuarios/proyecto/:ID', (req, res) => {
+    const { ID } = req.params;
+    const query = `select proyecto.* from proyecto join users_has_proyecto on proyecto.Proy_ID = users_has_proyecto.Proyecto_Proy_ID where users_has_proyecto.users_User_ID = ?`;
+    mysqlConnection.query(query, [ID], (err, rows, fields) => {
+        if (!err) {
+            console.log(req);
+            res.json(rows);
+            console.log("Proyectos retornado con exito!");
+            console.log(rows)
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//Obetener Formularios
+router.get('/usuario/formulario/:ID', (req, res) => {
+    const { ID } = req.params;
+    const query = `select * from Formulario where users_User_ID=? `;
+    mysqlConnection.query(query, (err, rows, fields) => {
+        if (!err) {
+            res.json(rows);
+            console.log("Formularios retornados con exito!");
         } else {
             console.log(err);
         }
