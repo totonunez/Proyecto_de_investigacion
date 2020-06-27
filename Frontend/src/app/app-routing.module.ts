@@ -6,6 +6,8 @@ import { HomeComponent } from './Componentes/home/home.component';
 import { ViajesComponent } from './Componentes/viajes/viajes.component';
 import { ViajesFromComponent } from './Componentes/viajes-from/viajes-from.component';
 import { GetionmiembrosComponent } from './Componentes/getionmiembros/getionmiembros.component';
+import { ProyectoComponent } from './Componentes/Proyecto/Proyecto.component';
+import { GestionproyectoComponent } from './Componentes/gestionproyecto/gestionproyecto.component';
 
 const routes: Routes = [
   { path:"",
@@ -29,6 +31,18 @@ const routes: Routes = [
   {
     path:"viajes/create",
     component:ViajesFromComponent
+  },
+  {
+    path:"proyecto",
+    component:HomeComponent
+  },
+  {
+    path:"proyecto/:id",
+    component:ProyectoComponent
+  },
+  {
+    path:"proyecto/gestion/:id",
+    component:GestionproyectoComponent
   }
 
 ];

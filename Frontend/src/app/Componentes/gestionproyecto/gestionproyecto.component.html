@@ -1,0 +1,28 @@
+<p class="font-weight-bold">Gestion miembros de proyectos</p>
+
+
+<div class="card">
+  <div class="card-body">
+    <p class="font-weight-bold">Cambiar nombre al proyecto</p>
+    <form>
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" name="title" [(ngModel)]="cnombre.Nombre" #ctrl="ngModel" placeholder="" class="form-control" autofocus>
+      </div>
+      <button type="submit" class="btn btn-primary" (click) = "ModificarNombre()">Enviar</button>
+    </form>
+  </div>
+</div>
+<div class="card">
+    <div class="card-body">
+      <p class="font-weight-bold">Cambiar descripcion al proyecto</p>
+      <form>
+        <div class="form-group">
+          <label>descripcion</label>
+          <input type="text" name="title" [(ngModel)]="cdescripcion.Descripcion" placeholder="" class="form-control" autofocus>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="ModificarNombre()">Enviar</button>
+      </form>
+    </div>
+</div>
+

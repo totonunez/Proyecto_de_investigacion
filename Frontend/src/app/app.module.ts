@@ -12,10 +12,14 @@ import { HomeComponent } from './Componentes/home/home.component';
 import { ViajesComponent } from './Componentes/viajes/viajes.component';
 import { ViajesFromComponent } from './Componentes/viajes-from/viajes-from.component';
 import { GetionmiembrosComponent } from './Componentes/getionmiembros/getionmiembros.component';
+import { ProyectoComponent } from './Componentes/Proyecto/Proyecto.component';
+import { GestionproyectoComponent } from './Componentes/gestionproyecto/gestionproyecto.component';
 
 //services
 import { EventosService } from './services/eventos.service';
 import { Gestionmiembros } from './services/gestionmiembros.service';
+import { gestionproyectoservice } from './services/gestionproyecto.service';
+import { ProyectoService } from './services/proyecto.service';
 
 
 
@@ -27,7 +31,9 @@ import { Gestionmiembros } from './services/gestionmiembros.service';
     HomeComponent,
     ViajesComponent,
     ViajesFromComponent,
-    GetionmiembrosComponent
+    GetionmiembrosComponent,
+    ProyectoComponent,
+    GestionproyectoComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,9 @@ import { Gestionmiembros } from './services/gestionmiembros.service';
   ],
   providers: [
     EventosService,
-    Gestionmiembros
+    Gestionmiembros,
+    gestionproyectoservice,
+    ProyectoService
   ],
   bootstrap: [AppComponent]
 })
