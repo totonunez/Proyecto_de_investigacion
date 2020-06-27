@@ -8,6 +8,10 @@ import { ViajesFromComponent } from './Componentes/viajes-from/viajes-from.compo
 import { GetionmiembrosComponent } from './Componentes/getionmiembros/getionmiembros.component';
 import {GrupoCrearComponent} from './Componentes/grupos/grupocrear.component'
 import { GrupoMiembroComponent } from './Componentes/gruposmiembros/grupomiembros.component';
+import { GruposComponent } from './Componentes/grupos-list/grupos.component';
+import { GestionGruposComponent } from './Componentes/gestion-grupos/gestion-grupos.component';
+
+
 const routes: Routes = [
   { path:"",
     component:InicioComponent
@@ -38,7 +42,14 @@ const routes: Routes = [
   {
     path:"grupos/miembros/agregar",
     component:GrupoMiembroComponent
-  }
+  },
+  {
+  path:"grupos",
+  component:GruposComponent},
+  {
+    path:"grupos/gestion/:Grupo_ID",
+  component:GestionGruposComponent} 
+
 ];
 
 @NgModule({
