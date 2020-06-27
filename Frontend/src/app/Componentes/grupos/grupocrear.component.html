@@ -1,0 +1,27 @@
+<head>
+  <title>Crear un Grupo</title>
+</head>
+
+<body>
+  <h1>CREE SU GRUPO BUEN HOMBRE</h1>
+<div class="card">
+    <div class="card-body">
+      <p class="font-weight-bold">Crear Usuario</p>
+      <form>
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" name="nombre" [(ngModel)]="tablagrupos.Nombre" placeholder="" class="form-control" autofocus>
+        </div>
+        <div class="form-group">
+            <label>Descripción</label>
+            <input type="text" name="descripcion" [(ngModel)]="tablagrupos.Descripcion" placeholder="" class="form-control" autofocus>
+        </div>
+        <div class="form-group">
+          <label>URL</label>
+          <input type="text" name="url" [(ngModel)]="tablagrupos.URL" placeholder="" class="form-control" autofocus>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="CrearGrupo()">Enviar</button>
+      </form>
+    </div>
+</div>
+</body>
