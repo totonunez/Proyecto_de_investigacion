@@ -65,9 +65,9 @@ router.get('/users/:User_ID', (req, res) => {
 
 //agregar miembros
 router.post('/grupos/miembros/agregar/', (req, res) => {
-    const { Grupo_Grupo_ID, users_User_ID  } = req.body;
-    const query = `INSERT INTO Grupo_has_users(Grupo_Grupo_ID, users_User_ID) VALUES (?,?)`;
-    mysqlConnection.query(query, [Grupo_Grupo_ID, users_User_ID], (err, rows, fields) => {
+    const { Grupo_Grupo_ID, users_User_ID, Admin  } = req.body;
+    const query = `INSERT INTO Grupo_has_users(Grupo_Grupo_ID, users_User_ID, Admin) VALUES (?,?,?)`;
+    mysqlConnection.query(query, [Grupo_Grupo_ID, users_User_ID, Admin], (err, rows, fields) => {
         if (!err) {
             console.log(req);
             res.json(rows);

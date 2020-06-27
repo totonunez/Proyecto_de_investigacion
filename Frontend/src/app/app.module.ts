@@ -23,7 +23,7 @@ import { EventosService } from './services/eventos.service';
 import { Gestionmiembros } from './services/gestionmiembros.service';
 import { GrupoCrearService } from './services/grupocrear.service';
 import { GruposMiembrosService } from './services/gruposmiembros.service';
-
+import { GruposService } from './services/grupos.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,8 @@ import { GruposMiembrosService } from './services/gruposmiembros.service';
     EventosService,
     Gestionmiembros,
     GrupoCrearService,
-    GruposMiembrosService
+    GruposMiembrosService,
+    GruposService
   ],
   bootstrap: [AppComponent]
 })

@@ -12,7 +12,7 @@ export class GruposMiembrosService {
   }
 
   retornargrupomiembros(algo: grupomiembros){
-    return this.http.post(`${this.API_URI}/grupo/miembros/agregar/`,algo)
+    return this.http.post(`${this.API_URI}/grupos/miembros/agregar/`,algo)
   }
 }
 

@@ -6,7 +6,7 @@ import { HomeComponent } from './Componentes/home/home.component';
 import { ViajesComponent } from './Componentes/viajes/viajes.component';
 import { ViajesFromComponent } from './Componentes/viajes-from/viajes-from.component';
 import { GetionmiembrosComponent } from './Componentes/getionmiembros/getionmiembros.component';
-import {GrupoCrearComponent} from './Componentes/grupos/grupocrear.component'
+import { GrupoCrearComponent}  from './Componentes/grupos/grupocrear.component'
 import { GrupoMiembroComponent } from './Componentes/gruposmiembros/grupomiembros.component';
 import { GruposComponent } from './Componentes/grupos-list/grupos.component';
 import { GestionGruposComponent } from './Componentes/gestion-grupos/gestion-grupos.component';
