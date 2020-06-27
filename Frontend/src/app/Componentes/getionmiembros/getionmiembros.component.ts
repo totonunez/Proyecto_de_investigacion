@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 import { Gestionmiembros } from '../../services/gestionmiembros.service'
 import { userandjpid } from '../../models/IDJPIDuser'
@@ -12,8 +13,9 @@ import { Invproyecto } from '../../models/invproyecto'
 })
 export class GetionmiembrosComponent implements OnInit {
 
-  actualJP_ID: number;
-  actualProyecto_ID: number;
+  actualJPID: number;
+  actualProyID: number;
+
   response: string; 
   JPandpermiso: any =[];
   userlist: any =[];
@@ -27,7 +29,7 @@ export class GetionmiembrosComponent implements OnInit {
     Email: null
   }
   cambiarpriv: cambiarprivilegio = {
-    users_User_ID_JP: 1,
+    users_User_ID_JP: null,
     users_User_ID: null,
     Proyecto_Proy_ID: null
   }
@@ -36,7 +38,7 @@ export class GetionmiembrosComponent implements OnInit {
     Proyecto_Proy_ID: null
   }
   useridnojp: userIDnoJP = {
-    Proyecto_Proy_ID: 1,
+    Proyecto_Proy_ID: null,
     JP: 0
   }
   invtuser:Invproyecto = {
@@ -46,27 +48,27 @@ export class GetionmiembrosComponent implements OnInit {
     users_User_ID: null
   }
 
-  constructor(private gestionMiembros: Gestionmiembros) { }
+  constructor(private gestionMiembros: Gestionmiembros, private router:Router) { }
 
   ngOnInit(): void {
-    this.gestionMiembros.Get_listmemberIDnoJP(this.useridnojp).subscribe(
+    this.actualJPID = Number(localStorage.getItem("User_ID"))
+    this.actualProyID = Number(localStorage.getItem("Proy_ID"))
+    this.usuario.users_User_ID = this.actualJPID
+    this.usuario.Proyecto_Proy_ID = this.actualProyID
+    
+    this.gestionMiembros.retornarsiesjp(this.usuario).subscribe(
       res => {
-        this.usernojplist = res;
-        console.log(res);
+        if (res === false){
+          alert("No eres Jefe de Proyecto")
+          this.router.navigate(['/home']);
+        }
       },
       err => console.log(err)
     )
-  }
-  
-  recuperardatos(Proyecto_ID: number,JP_ID: number): void {
-    this.actualProyecto_ID = Proyecto_ID;
-    this.actualJP_ID = JP_ID;
-  }
-
-  RetornarJP(): void{
-    this.gestionMiembros.retornarsiesjp(this.usuario).subscribe(
+    this.useridnojp.Proyecto_Proy_ID = this.actualProyID
+    this.gestionMiembros.Get_listmemberIDnoJP(this.useridnojp).subscribe(
       res => {
-        this.JPandpermiso = res;
+        this.usernojplist = res;
         console.log(res);
       },
       err => console.log(err)
@@ -78,6 +80,7 @@ export class GetionmiembrosComponent implements OnInit {
     this.gestionMiembros.Get_UserID(this.useryproyec).subscribe(
       res => {
         this.invtuser.users_User_ID = res[0].User_ID;
+        this.invtuser.Proyecto_Proy_ID = this.actualProyID;
         this.gestionMiembros.Invmiemb(this.invtuser).subscribe(
           res => {
             console.log(res);
@@ -90,6 +93,7 @@ export class GetionmiembrosComponent implements OnInit {
   }
 
   eliminarmienbro(): void{
+    this.useryproyecID.Proyecto_Proy_ID = this.actualProyID;
     this.gestionMiembros.Eliminarmember(this.useryproyecID).subscribe(
       res => {
         console.log(res);
@@ -100,10 +104,13 @@ export class GetionmiembrosComponent implements OnInit {
 
   cambiarJP(): void{
     if(confirm('Estas seguro de querer cambiar de Jefe de Proyecto?')){
+      this.cambiarpriv.users_User_ID_JP=this.actualJPID
+      this.cambiarpriv.Proyecto_Proy_ID=this.actualProyID
       console.log(this.cambiarpriv)
       this.gestionMiembros.cambiarprivilegios(this.cambiarpriv).subscribe(
         res => {
           console.log(res);
+          this.router.navigate(['/home']);
         },
         err => console.log(err)
       )

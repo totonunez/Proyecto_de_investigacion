@@ -100,12 +100,20 @@ router.post('/mienbros_proyectos/cambiarJP', (req, res) => {
 
 //Retornar si el miembro es JP
 router.post('/mienbros_proyectos/privilegiojp', (req, res) => {
+    var EsJP = false;
     const { users_User_ID, Proyecto_Proy_ID } = req.body;
-    const query = `SELECT * FROM users_has_Proyecto WHERE users_User_ID=? AND Proyecto_Proy_ID=?`;
+    const query = `SELECT JP FROM users_has_Proyecto WHERE users_User_ID=? AND Proyecto_Proy_ID=?`;
     mysqlConnection.query(query, [users_User_ID, Proyecto_Proy_ID ], (err, rows, fields) => {
         if (!err) {
-            res.json(rows);
-            console.log("JP retornados con exito!");
+            if (rows[0].JP == 0){
+                res.json(EsJP);
+                console.log(EsJP)
+                console.log("No es JP!");
+            } else {
+                EsJP = true;
+                res.json(EsJP);
+                console.log("Es JP!");
+            }    
         } else {
             console.log(err);
         }
