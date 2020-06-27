@@ -8,6 +8,7 @@ import { ViajesFromComponent } from './Componentes/viajes-from/viajes-from.compo
 import { GetionmiembrosComponent } from './Componentes/getionmiembros/getionmiembros.component';
 import { ProyectoComponent } from './Componentes/Proyecto/Proyecto.component';
 import { GestionproyectoComponent } from './Componentes/gestionproyecto/gestionproyecto.component';
+import { InvitacionComponent } from './Componentes/invitacion/invitacion.component'
 
 const routes: Routes = [
   { path:"",
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path:"proyecto/gestion/:id",
     component:GestionproyectoComponent
+  },
+  {
+    path:"usuario/invitacion",
+    component:InvitacionComponent
   }
 
 ];

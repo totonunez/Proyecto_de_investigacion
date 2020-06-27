@@ -20,6 +20,7 @@ import { EventosService } from './services/eventos.service';
 import { Gestionmiembros } from './services/gestionmiembros.service';
 import { gestionproyectoservice } from './services/gestionproyecto.service';
 import { ProyectoService } from './services/proyecto.service';
+import { InvitacionComponent } from './Componentes/invitacion/invitacion.component';
 
 
 
@@ -34,6 +35,7 @@ import { ProyectoService } from './services/proyecto.service';
     GetionmiembrosComponent,
     ProyectoComponent,
     GestionproyectoComponent,
+    InvitacionComponent,
   ],
   imports: [
     BrowserModule,
