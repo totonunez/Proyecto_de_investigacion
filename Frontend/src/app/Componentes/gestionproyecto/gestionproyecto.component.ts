@@ -46,11 +46,29 @@ export class GestionproyectoComponent implements OnInit {
     console.log(this.cnombre)
     this.ProyectoCambio.CambiarNombre(this.cnombre).subscribe(res => console.log(res),req => console.log(req))
   }
+
   ModificarDescripcion(): void{
-    this.ProyectoCambio.CambiarDescripcion(this.cdescripcion)
+    this.cdescripcion.Proy_ID = Number(this.Proy_ID)
+    this.cdescripcion.Descripcion = this.cdescripcion.Descripcion.toString()
+    console.log(this.cdescripcion)
+    this.ProyectoCambio.CambiarDescripcion(this.cdescripcion).subscribe(res => console.log(res),req => console.log(req))
   }
+  
   ModificarEstado(): void{
-    this.ProyectoCambio.CambiarEstado(this.cestado)
+    this.cestado.Proy_ID = Number(this.Proy_ID)
+    this.cestado.Estado = this.cestado.Estado.toString()
+    console.log(this.cestado)
+    this.ProyectoCambio.CambiarEstado(this.cestado).subscribe(res => console.log(res),req => console.log(req))
+  }
+  EliminarProyecto(): void{
+    if(confirm('Estas seguro de eliminar el proyecto?')){
+      this.ProyectoCambio.DeleteProyecto(this.Proy_ID).subscribe(
+        res => {
+          console.log(res);
+          this.router.navigate(['/home']);
+        },
+        req => console.log(req))  
+    }
   }
 }
 

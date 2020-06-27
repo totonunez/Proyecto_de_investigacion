@@ -2,7 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { ProyectoService } from '../../services/proyecto.service';
-import { proyecto } from '../../models/proyecto';
+import { proyectobd } from '../../models/proyectobd';
 
 @Component({
   selector: 'app-proyecto',
@@ -16,13 +16,13 @@ export class ProyectoComponent implements OnInit {
 
   response: any = [];
 
-  datos: proyecto = {
-    Proy_ID : null,
-    Nombre : null,
-    Descripcion : null,
-    Estado : null
+  datos: proyectobd = {
+    Descripcion: null,
+    Estado: null,
+    Nombre: null,
+    Proy_ID: null,
   }
-  
+
   edit: boolean = false;
 
   constructor(private ProyectoData : ProyectoService,  private router: Router , private activatedRoute: ActivatedRoute) { }
@@ -35,6 +35,7 @@ export class ProyectoComponent implements OnInit {
             console.log(res);
             this.datos = res;
             localStorage.setItem('Proy_ID', JSON.stringify(res[0].Proy_ID));
+            console.log(this.datos[0].Proy_ID);
             this.edit = true;
           },
           err => console.log(err)

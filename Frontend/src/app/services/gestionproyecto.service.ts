@@ -26,5 +26,9 @@ export class gestionproyectoservice {
   CambiarEstado(cambio : cambioestado){
     return this.http.post(`${this.API_URI}/proyectos/estado/cambiar`,cambio);
   }
+
+  DeleteProyecto(id : number){
+    return this.http.get(`${this.API_URI}/proyectos/eliminar/${id}`);
+  }
   
 }
