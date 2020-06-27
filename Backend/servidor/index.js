@@ -31,3 +31,4 @@ app.use(require('./rutas/proyectos'));
 app.use(require('./rutas/grupos'));
 app.use(require('./rutas/documentos'));
 app.use(require('./rutas/mienbros_proyectos'));
+app.use(require('./rutas/login'));

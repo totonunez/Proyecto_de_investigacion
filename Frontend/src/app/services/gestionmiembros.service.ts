@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { userandjpid } from '../models/IDJPIDuser';
-import { userandproyecto } from '../models/userandproyeccto';
+import { userandproyecto , userandproyectoID , userIDnoJP , cambiarprivilegio} from '../models/userandproyeccto';
 import { Invproyecto } from '../models/invproyecto';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class Gestionmiembros {
   API_URI = 'http://localhost:3000';
   constructor(private http:HttpClient) {
 
-   }
+  }
   /* ejemplo de service
    getBuscarPacienteAPI(id:string){//buscar paciente por rut
     return this.http.get(`${this.API_URI}/paciente/${id}`);//son backtick de jav `` alt+parentecis
@@ -43,9 +43,21 @@ export class Gestionmiembros {
     return this.http.post(`${this.API_URI}/mienbros_proyectos/privilegiojp`, ids)
   }
   Get_UserID(username: userandproyecto) {
-    return this.http.get(`${this.API_URI}/mienbros_proyectos/getuseridbyusername/${username.Usuario}`);
+    return this.http.get(`${this.API_URI}/mienbros_proyectos/getuseridbyemail/${username.Email}`);
   }
   Invmiemb(idsJPUser: Invproyecto) {
     return this.http.post(`${this.API_URI}/mienbros_proyectos/invitarmiembro`,idsJPUser);
+  }
+  Get_listmemberID(Proyecto_ID: number) {
+    return this.http.get(`${this.API_URI}/mienbros_proyectos/memberlist/${Proyecto_ID}`);
+  }
+  Eliminarmember(sen_IDS: userandproyectoID) {
+    return this.http.post(`${this.API_URI}/mienbros_proyectos/eliminarmiembro`,sen_IDS);
+  }
+  Get_listmemberIDnoJP(idnojp: userIDnoJP){
+    return this.http.post(`${this.API_URI}/mienbros_proyectos/miembrosnojp`,idnojp);
+  }
+  cambiarprivilegios(privilegio: cambiarprivilegio){
+    return this.http.post(`${this.API_URI}/mienbros_proyectos/cambiarJP`,privilegio);
   }
 }
