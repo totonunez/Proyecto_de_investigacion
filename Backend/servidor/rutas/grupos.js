@@ -63,20 +63,6 @@ router.get('/grupos/grupo/eliminar/:Grupo_ID', (req, res) => {
     });
 });
 
-//ver grupos
-router.get('/users/:User_ID', (req, res) => {
-    const { User_ID } = req.params;
-    const query = `SELECT * FROM Grupo_has_users where users_User_ID = ?`;
-    mysqlConnection.query(query, [id_users], (err, rows, fields) => {
-        if (!err) {
-            res.json(rows);
-            console.log("Diespliegue de grupos con éxito!");
-        } else {
-            console.log(err);
-        }
-    });
-});
-
 //agregar miembros
 router.post('/grupos/grupo/miembros/agregar/', (req, res) => {
     const { Grupo_Grupo_ID, users_User_ID, Admin  } = req.body;
@@ -92,6 +78,21 @@ router.post('/grupos/grupo/miembros/agregar/', (req, res) => {
     });
 });
 
+
+//muestra miembros de un grupo
+router.get('/grupo/miembros/:Grupo_ID', (req, res) => {
+    const { Grupo_ID } = req.params;
+    const query = `SELECT Usuario FROM users WHERE User_ID IN (SELECT users_User_ID FROM Grupo_has_users WHERE Grupo_Grupo_ID = ?)`;
+    mysqlConnection.query(query,[Grupo_ID], (err, rows, fields) => {
+        if (!err) {
+            console.log(req);
+            res.json(rows);
+            console.log("mostrando ");
+        } else {
+            console.log(err);
+        }
+    });
+});
 
 
 //eliminar miembros
@@ -177,4 +178,19 @@ router.get('/grupos/miembros/invitar:Grupo_ID', (req, res) => {
         }
     });
 });
+
+//ver grupos
+router.get('/users/:User_ID', (req, res) => {
+    const { User_ID } = req.params;
+    const query = `SELECT * FROM Grupo_has_users where users_User_ID = ?`;
+    mysqlConnection.query(query, [id_users], (err, rows, fields) => {
+        if (!err) {
+            res.json(rows);
+            console.log("Diespliegue de grupos con éxito!");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
 module.exports=router;
