@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {GrupoListMiembrosService} from '../../services/grupolistmiembros';
+import { GrupoListMiembrosService } from '../../services/grupolistmiembros.service';
 import { ActivatedRoute } from '@angular/router';
 //modelo
 import { tablagrupos } from '../../models/tablagrupos';

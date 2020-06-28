@@ -13,6 +13,8 @@ import { GestionGruposComponent } from './Componentes/gestion-grupos/gestion-gru
 import { GrupoEliminarComponent } from './Componentes/gruposeliminar/grupoeliminar.component';
 import { GrupoVerComponent } from './Componentes/grupover/grupover.component';
 import { GrupoListMiembrosComponent } from './Componentes/grupolistmiembros/grupolistmiembros.component';
+import { GrupoMiembrosEliminarComponent } from './Componentes/grupomiembroseliminar/grupomiembroseliminar.component';
+
 
 const routes: Routes = [
   { path:"",
@@ -63,6 +65,10 @@ const routes: Routes = [
   {
     path:"grupo/miembros/:Grupo_ID",
     component:GrupoListMiembrosComponent
+  },
+  {
+    path:"grupo/eliminarmiembros",
+    component:GrupoMiembrosEliminarComponent
   }
 ];
 

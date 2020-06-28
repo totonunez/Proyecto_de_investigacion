@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GrupoListMiembrosService } from './grupolistmiembros';
+import { GrupoListMiembrosService } from './grupolistmiembros.service';
 
 describe('GrupoVerService', () => {
   let service: GrupoListMiembrosService;

@@ -17,7 +17,9 @@ import { GrupoMiembroComponent } from './Componentes/gruposmiembros/grupomiembro
 import { GruposComponent } from './Componentes/grupos-list/grupos.component';
 import { GestionGruposComponent } from './Componentes/gestion-grupos/gestion-grupos.component';
 import { GrupoEliminarComponent } from './Componentes/gruposeliminar/grupoeliminar.component'
+import { GrupoVerComponent } from './Componentes/grupover/grupover.component';
 import { GrupoListMiembrosComponent } from './Componentes/grupolistmiembros/grupolistmiembros.component'
+import { GrupoMiembrosEliminarComponent } from './Componentes/grupomiembroseliminar/grupomiembroseliminar.component';
 
 //services
 import { EventosService } from './services/eventos.service';
@@ -26,9 +28,10 @@ import { GrupoCrearService } from './services/grupocrear.service';
 import { GruposMiembrosService } from './services/gruposmiembros.service';
 import { GruposService } from './services/grupos.service';
 import { GrupoEliminarService } from './services/grupoeliminar.service';
-import { GrupoVerComponent } from './Componentes/grupover/grupover.component';
 import { GrupoVerService } from './services/grupover.service';
-import { GrupoListMiembrosService } from './services/grupolistmiembros';
+import { GrupoListMiembrosService } from './services/grupolistmiembros.service';
+import { GrupoMiembrosEliminarService } from './services/grupomiembroseliminar.service'
+
 
 @NgModule({
   declarations: [
@@ -45,7 +48,8 @@ import { GrupoListMiembrosService } from './services/grupolistmiembros';
     GestionGruposComponent,
     GrupoEliminarComponent,
     GrupoVerComponent,
-    GrupoListMiembrosComponent
+    GrupoListMiembrosComponent,
+    GrupoMiembrosEliminarComponent
 
   ],
   imports: [
@@ -62,7 +66,8 @@ import { GrupoListMiembrosService } from './services/grupolistmiembros';
     GruposService,
     GrupoEliminarService,
     GrupoVerService,
-    GrupoListMiembrosService
+    GrupoListMiembrosService,
+    GrupoMiembrosEliminarService
   ],
   bootstrap: [AppComponent]
 })

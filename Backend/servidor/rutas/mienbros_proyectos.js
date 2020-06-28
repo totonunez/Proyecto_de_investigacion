@@ -76,10 +76,10 @@ router.post('/mienbros_proyectos/agregarmiembro', (req, res) => {
     });
 });
 
-//Eliminar miembro del proyecto
+//Eliminar miembro del proyecto FUNCIONA y se OCUPA
 router.post('/mienbros_proyectos/eliminarmiembro', (req, res) => {
     const { users_User_ID, Proyecto_Proy_ID} = req.body;
-    const query = `DELETE users_has_Proyecto WHERE users_User_ID=? AND Proyecto_Proy_ID=?`;
+    const query = `DELETE FROM users_has_Proyecto WHERE users_User_ID=? AND Proyecto_Proy_ID=?`;
     mysqlConnection.query(query, [users_User_ID, Proyecto_Proy_ID], (err, rows, fields) => {
         if (!err) {
             console.log(req);

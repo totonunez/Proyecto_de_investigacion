@@ -96,11 +96,12 @@ router.get('/grupo/miembros/:Grupo_ID', (req, res) => {
 
 
 //eliminar miembros
-router.get('/grupos/miembros/:Grupo_ID', (req, res) => {
-    const { User_ID } = req.params;
-    const query = `DELETE FROM Grupo_has_users where users_User_ID=?`;
-    mysqlConnection.query(query, [id_users], (err, rows, fields) => {
+router.post('/grupo/eliminarmiembros', (req, res) => {
+    const { Grupo_Grupo_ID, users_User_ID } = req.body;
+    const query = `DELETE FROM Grupo_has_users WHERE Grupo_Grupo_ID=? AND users_User_ID=?`;
+    mysqlConnection.query(query, [Grupo_Grupo_ID, users_User_ID], (err, rows, fields) => {
         if (!err) {
+            console.log(req);
             res.json(rows);
             console.log("Miembro eliminado con exito!");
         } else {
