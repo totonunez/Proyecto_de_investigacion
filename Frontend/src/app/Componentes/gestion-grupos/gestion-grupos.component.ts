@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 //import {GestionGruposService} from '../../services/gestion-grupos.service';
+
 @Component({
   selector: 'app-gestion-grupos',
   templateUrl: './gestion-grupos.component.html',
@@ -16,6 +17,5 @@ export class GestionGruposComponent implements OnInit {
     };
   }
 
-  
 
 }

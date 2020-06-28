@@ -1,5 +1,6 @@
 export interface tablagrupos {
-    Nombre?: string;
     Descripcion?: string;
+    Grupo_ID?: number;
+    Nombre?: string;
     URL?: string;
 } 

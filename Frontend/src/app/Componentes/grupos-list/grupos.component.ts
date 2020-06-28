@@ -22,15 +22,11 @@ export class GruposComponent implements OnInit {
     //funciones 
 
     this.gruposServices.retornarTablaGrupos().subscribe(
-
       res => {
         this.grupos = res;
         console.log(res)
       },
-      err => console.error(err)
-      
+      err => console.error(err) 
     )
-
   }
-
 }

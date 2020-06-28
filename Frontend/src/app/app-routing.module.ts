@@ -10,7 +10,8 @@ import { GrupoCrearComponent}  from './Componentes/grupos/grupocrear.component'
 import { GrupoMiembroComponent } from './Componentes/gruposmiembros/grupomiembros.component';
 import { GruposComponent } from './Componentes/grupos-list/grupos.component';
 import { GestionGruposComponent } from './Componentes/gestion-grupos/gestion-grupos.component';
-
+import { GrupoEliminarComponent } from './Componentes/gruposeliminar/grupoeliminar.component';
+import { GrupoVerComponent } from './Componentes/grupover/grupover.component';
 
 const routes: Routes = [
   { path:"",
@@ -40,16 +41,24 @@ const routes: Routes = [
     component:GrupoCrearComponent
   },
   {
-    path:"grupos/miembros/agregar",
+    path:"grupos/grupo/miembros/agregar",
     component:GrupoMiembroComponent
   },
   {
-  path:"grupos",
-  component:GruposComponent},
+    path:"grupos",
+    component:GruposComponent},
   {
     path:"grupos/gestion/:Grupo_ID",
-  component:GestionGruposComponent} 
-
+    component:GestionGruposComponent
+  },
+  {
+    path:"grupos/grupo/eliminar/:Grupo_ID",
+    component:GrupoEliminarComponent
+  },
+  {
+    path:"grupos/grupo/:Grupo_ID",
+    component:GrupoVerComponent
+  }
 ];
 
 @NgModule({

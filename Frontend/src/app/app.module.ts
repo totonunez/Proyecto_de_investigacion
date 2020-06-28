@@ -16,6 +16,7 @@ import { GrupoCrearComponent } from './Componentes/grupos/grupocrear.component';
 import { GrupoMiembroComponent } from './Componentes/gruposmiembros/grupomiembros.component';
 import { GruposComponent } from './Componentes/grupos-list/grupos.component';
 import { GestionGruposComponent } from './Componentes/gestion-grupos/gestion-grupos.component';
+import { GrupoEliminarComponent } from './Componentes/gruposeliminar/grupoeliminar.component'
 
 
 //services
@@ -24,6 +25,9 @@ import { Gestionmiembros } from './services/gestionmiembros.service';
 import { GrupoCrearService } from './services/grupocrear.service';
 import { GruposMiembrosService } from './services/gruposmiembros.service';
 import { GruposService } from './services/grupos.service';
+import { GrupoEliminarService } from './services/grupoeliminar.service';
+import { GrupoVerComponent } from './Componentes/grupover/grupover.component';
+import { GrupoVerService } from './services/grupover.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,9 @@ import { GruposService } from './services/grupos.service';
     GrupoMiembroComponent,
     GrupoCrearComponent,
     GruposComponent,
-    GestionGruposComponent
+    GestionGruposComponent,
+    GrupoEliminarComponent,
+    GrupoVerComponent
 
   ],
   imports: [
@@ -51,7 +57,9 @@ import { GruposService } from './services/grupos.service';
     Gestionmiembros,
     GrupoCrearService,
     GruposMiembrosService,
-    GruposService
+    GruposService,
+    GrupoEliminarService,
+    GrupoVerService
   ],
   bootstrap: [AppComponent]
 })
