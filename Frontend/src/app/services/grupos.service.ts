@@ -13,8 +13,8 @@ export class GruposService {
   constructor(private http:HttpClient) { }
 //todas las funcionalidades de grupos
 
-   retornarTablaGrupos() {
-     return this.http.get(`${this.API_URI}/grupos`);
+   retornarTablaGrupos(algo : number ) {    
+     return this.http.get(`${this.API_URI}/${algo}/grupos`);
    }
 }
 

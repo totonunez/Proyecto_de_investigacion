@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GruposMiembrosService } from '../../services/gruposmiembros.service'
 import { grupomiembros } from '../../models/grupomiembros'
+import {ActivatedRoute} from '@angular/router'
 
 @Component({
   selector: 'app-grupomiembros', 
@@ -16,9 +17,12 @@ export class GrupoMiembroComponent implements OnInit {
   }
 
   variab: any = [];
+Grupo_ID : any;
 
-
-  constructor(private grupomiembrosservice: GruposMiembrosService) { }
+  constructor(private grupomiembrosservice: GruposMiembrosService , private _route :ActivatedRoute) {
+    this.Grupo_ID = this._route.snapshot.paramMap.get('Grupo_ID')
+    console.log(this.Grupo_ID);
+   }
 
   ngOnInit(): void {
     console.log("Estoy funcionando!!!!")

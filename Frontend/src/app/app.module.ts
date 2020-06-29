@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'; 
 
 //components
 import { AppComponent } from './app.component';
@@ -16,6 +16,10 @@ import { GrupoCrearComponent } from './Componentes/grupos/grupocrear.component';
 import { GrupoMiembroComponent } from './Componentes/gruposmiembros/grupomiembros.component';
 import { GruposComponent } from './Componentes/grupos-list/grupos.component';
 import { GestionGruposComponent } from './Componentes/gestion-grupos/gestion-grupos.component';
+import { GrupoEliminarComponent } from './Componentes/gruposeliminar/grupoeliminar.component'
+import { GrupoListMiembrosComponent } from './Componentes/grupolistmiembros/grupolistmiembros.component'
+import { GrupoMiembrosEliminarComponent } from './Componentes/grupomiembroseliminar/grupomiembroseliminar.component';
+import { GrupoVerComponent } from './Componentes/grupover/grupover.component';
 
 
 //services
@@ -24,6 +28,10 @@ import { Gestionmiembros } from './services/gestionmiembros.service';
 import { GrupoCrearService } from './services/grupocrear.service';
 import { GruposMiembrosService } from './services/gruposmiembros.service';
 import { GruposService } from './services/grupos.service';
+import { GrupoEliminarService } from './services/grupoeliminar.service';
+import { GrupoVerService } from './services/grupover.service';
+import { GrupoListMiembrosService } from './services/grupolistmiembros'; 
+import { GrupoMiembrosEliminarService } from './services/grupomiembroseliminar.service'
 
 @NgModule({
   declarations: [
@@ -37,7 +45,11 @@ import { GruposService } from './services/grupos.service';
     GrupoMiembroComponent,
     GrupoCrearComponent,
     GruposComponent,
-    GestionGruposComponent
+    GestionGruposComponent,
+    GrupoEliminarComponent,
+    GrupoVerComponent,
+    GrupoListMiembrosComponent,
+    GrupoMiembrosEliminarComponent
 
   ],
   imports: [
@@ -51,7 +63,12 @@ import { GruposService } from './services/grupos.service';
     Gestionmiembros,
     GrupoCrearService,
     GruposMiembrosService,
-    GruposService
+    GruposService,
+    GrupoEliminarService,
+    GrupoVerService,
+    GrupoListMiembrosService,
+    GrupoMiembrosEliminarService
+
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {ActivatedRoute} from '@angular/router'
 import { Gestionmiembros } from '../../services/gestionmiembros.service'
 import { userandjpid } from '../../models/IDJPIDuser'
 import { userandproyecto } from '../../models/userandproyeccto'
@@ -28,8 +28,11 @@ export class GetionmiembrosComponent implements OnInit {
     Proyecto_Proy_ID: null,
     users_User_ID: null
   }
-
-  constructor(private gestionMiembros: Gestionmiembros) { }
+  Grupo_ID : any;
+  constructor(private gestionMiembros: Gestionmiembros, private _route :ActivatedRoute) {
+    this.Grupo_ID = this._route.snapshot.paramMap.get('Grupo_ID')
+    console.log(this.Grupo_ID);
+   }
 
   ngOnInit(): void {
   }

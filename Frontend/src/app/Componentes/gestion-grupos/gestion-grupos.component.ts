@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router'
+import { idmiembro } from '../../models/idmiembro'
+
+
 //import {GestionGruposService} from '../../services/gestion-grupos.service';
 @Component({
   selector: 'app-gestion-grupos',
@@ -7,13 +11,38 @@ import { ActivatedRoute} from '@angular/router';
   styleUrls: ['./gestion-grupos.component.sass']
 })
 export class GestionGruposComponent implements OnInit {
-  grupo : { Grupo_ID : any };
-  constructor(private rutaActiva: ActivatedRoute) { }
+  Grupo_ID : any ;
+  idmiembro: idmiembro = {
+    User_ID: null
+  }
+
+  constructor( private _route :ActivatedRoute, private router: Router) { 
+    this.Grupo_ID = this._route.snapshot.paramMap.get('Grupo_ID')
+    console.log(this.Grupo_ID);
+    console.log('olas')
+  }
  
   ngOnInit(): void {
-    this.grupo = {
-      Grupo_ID: this.rutaActiva.snapshot.params.get('Grupo_ID')
-    };
+
+    res  =>{
+      this.Grupo_ID = res;
+    }
+
+
+  }
+  agregarMiembro(): void{
+    this.router.navigate(['miembros','agregar' ])
+
+  }
+  eliminarGrupo(): void{
+   
+    this.router.navigate(['grupos','grupo','eliminar',this.Grupo_ID])
+
+  }
+  eliminarMiembro(): void{
+   
+    this.router.navigate(['grupo','eliminarmiembros'])
+
   }
 
   

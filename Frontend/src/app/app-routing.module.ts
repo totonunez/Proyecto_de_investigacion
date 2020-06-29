@@ -10,11 +10,14 @@ import { GrupoCrearComponent}  from './Componentes/grupos/grupocrear.component'
 import { GrupoMiembroComponent } from './Componentes/gruposmiembros/grupomiembros.component';
 import { GruposComponent } from './Componentes/grupos-list/grupos.component';
 import { GestionGruposComponent } from './Componentes/gestion-grupos/gestion-grupos.component';
-
+import { GrupoEliminarComponent } from './Componentes/gruposeliminar/grupoeliminar.component';
+import { GrupoVerComponent } from './Componentes/grupover/grupover.component';
+import { GrupoListMiembrosComponent } from './Componentes/grupolistmiembros/grupolistmiembros.component';
+import { GrupoMiembrosEliminarComponent } from './Componentes/grupomiembroseliminar/grupomiembroseliminar.component';
 
 const routes: Routes = [
   { path:"",
-    component:InicioComponent
+    component:InicioComponent 
   },
   { path:"proyecto/miembros/gestion",
     component:GetionmiembrosComponent
@@ -24,7 +27,7 @@ const routes: Routes = [
     component:LoginComponent
   },  
   {
-    path:"home",
+    path:":User_ID/home",
     component:HomeComponent
   },
   {
@@ -36,19 +39,36 @@ const routes: Routes = [
     component:ViajesFromComponent
   },
   {
-    path:"grupos/crear",
+    path:":User_ID/grupos/crear",
     component:GrupoCrearComponent
   },
   {
-    path:"grupos/miembros/agregar",
+    path:"miembros/agregar",
     component:GrupoMiembroComponent
   },
   {
-  path:"grupos",
+  path:":User_ID/grupos",
   component:GruposComponent},
   {
-    path:"grupos/gestion/:Grupo_ID",
-  component:GestionGruposComponent} 
+    path:":grupos/gestion/:Grupo_ID",
+  component:GestionGruposComponent},
+  {
+    path:"grupos/grupo/eliminar/:Grupo_ID",
+    component:GrupoEliminarComponent
+  },
+  {
+    path:"grupos/grupo/:Grupo_ID",
+    component:GrupoVerComponent
+  },
+  {
+    path:"grupo/miembros/:Grupo_ID",
+    component:GrupoListMiembrosComponent
+  },
+  {
+    path:"grupo/eliminarmiembros",
+    component:GrupoMiembrosEliminarComponent
+  }
+
 
 ];
 

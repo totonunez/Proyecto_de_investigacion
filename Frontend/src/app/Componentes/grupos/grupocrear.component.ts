@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { GrupoCrearService } from '../../services/grupocrear.service'
 import { tablagrupos } from '../../models/tablagrupos'
+import {ActivatedRoute} from '@angular/router'
+import { Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-grupocrear', 
@@ -8,6 +11,8 @@ import { tablagrupos } from '../../models/tablagrupos'
   styleUrls: ['./grupocrear.component.css']
 })
 export class GrupoCrearComponent implements OnInit {
+  variab: any = [];
+  User_ID: any;
 
   tablagrupos: tablagrupos = {
     Nombre: null,
@@ -15,13 +20,15 @@ export class GrupoCrearComponent implements OnInit {
     URL: null,
   }
 
-  variab: any = [];
+  constructor(private grupocrearservice: GrupoCrearService , private _route :ActivatedRoute , private router: Router) {
+    this.User_ID = this._route.snapshot.paramMap.get('User_ID')
+    console.log(this.User_ID);
+   }
 
-
-  constructor(private grupocrearservice: GrupoCrearService) { }
 
   ngOnInit(): void {
     console.log("Estoy funcionando!!!!")
+    
   }
 
   CrearGrupo(): void{
